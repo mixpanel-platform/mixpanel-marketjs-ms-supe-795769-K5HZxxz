@@ -7,9 +7,43 @@
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
   </head>
   <body class="mixpanel-platform-body">
-    <h1>Hello, World!</h1>
     <script>
-      // Run queries and display results here
+    <body class="mixpanel-platform-body">
+    <div class="mixpanel-platform-section">
+      <h1>MarketJS & MotionLead | Google</h1>
+      <div style="clear: both;"></div>
+      <div id="30DayGooglePie" class="report"></div>
+      <div id="30DayGoogleTable" class="report"></div>
+    </div>
+    <div class="mixpanel-platform-section">
+      <h1>MarketJS & MotionLead | Mopub</h1>
+      <div style="clear: both;"></div>
+      <div id="30DayMopubPie" class="report"></div>
+      <div id="30DayMopubTable" class="report"></div>
+    </div>
+    <style>
+    h1 {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+    .report {
+     margin: 15px 0; 
+    }
+    </style>
+    <script>
+      var past30DayGooglePie  = $('#30DayGooglePie').MPChart({chartType: 'pie'});
+      var past30DayGoogleTable  = $('#30DayGoogleTable').MPTable({
+        showPercentages: true,
+        firstColHeader: 'Game Vendor'
+      });
+      var past30DayMopubPie  = $('#30DayMopubPie').MPChart({chartType: 'pie'});
+      var past30DayMopubTable  = $('#30DayMopubTable').MPTable({
+        showPercentages: true,
+        firstColHeader: 'Game Vendor'
+      });
+      
+  
+
     </script>
   </body>
 </html>
