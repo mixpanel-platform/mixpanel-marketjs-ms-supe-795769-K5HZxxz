@@ -41,6 +41,11 @@
         showPercentages: true,
         firstColHeader: 'Game Vendor'
       });
+            
+      var past30Params = {
+            from: moment().subtract(30, 'days'),
+            to: moment(),
+            type: 'general'
       
   
 
