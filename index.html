@@ -46,6 +46,7 @@
             to: moment(),
             type: 'general'
             'where': 'properties["SSP"] == google'
+      }
             
       var past30DayParams = {
           type: 'general'
@@ -73,6 +74,8 @@
             past30DayGoogleTable.MPTable('setData', past30DayData);
           });
         });
+        
+      }
       
     </script>
   </body>
