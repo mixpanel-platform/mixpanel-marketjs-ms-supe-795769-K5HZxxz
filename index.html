@@ -42,13 +42,30 @@
         firstColHeader: 'Game Vendor'
       });
             
-      var past30Params = {
+      var past30GoogleParams = {
             from: moment().subtract(30, 'days'),
             to: moment(),
             type: 'general'
+            where: 'properties["SSP"] == google'
             
       var runQuery = function() {
         var past30DayData = {};
+        
+        //Google Pie Chart Data
+        
+        MP.api.segment('Ad Loaded', 'Game Vendor', past30GoogleParams).done(function(results) {
+          $.extend(past30DayData, results.values());
+
+          MP.api.segment('Ad Loaded', 'Game Vendor', past30GoogleParams).done(function(results) {
+
+            if (past30DayData.hasOwnProperty('vendor_name_here')) {
+              delete past30DayData['vendor_name_here'];
+            }
+            console.log(past30DayData);
+            past30DayBar.MPChart('setData', past30DayData);
+            past30DayTable.MPTable('setData', past30DayData);
+          });
+        });
       
   
 
