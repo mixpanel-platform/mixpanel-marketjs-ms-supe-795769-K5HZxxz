@@ -48,6 +48,12 @@
             type: 'general'
             where: 'properties["SSP"] == google'
             
+      var past30DayParams = {
+          type: 'general'
+          unit: 'day'
+          interval: '30'
+          }
+            
       var runQuery = function() {
         var past30DayData = {};
         
@@ -72,7 +78,7 @@
       
       runQuery();
       
-      MP.api.events('Ad Loaded', 'Game Loaded', past30GoogleParams).done(function(results) {
+      MP.api.events('Ad Loaded', 'Game Loaded', past30DayParams).done(function(results) {
     
       });
 
