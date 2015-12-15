@@ -47,7 +47,8 @@
             type: 'general'
             where: 'properties["SSP"]) == "google"'
       }
-            
+              console.log("END");
+
        var runQuery = function() {
         var past30DayData = {};
         
@@ -66,7 +67,6 @@
             past30DayGoogleTable.MPTable('setData', past30DayData);
           });
         });
-        console.log("END");
       };
       
     </script>
