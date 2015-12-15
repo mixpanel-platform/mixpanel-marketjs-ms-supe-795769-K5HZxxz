@@ -61,7 +61,10 @@
             if (past30DayData.hasOwnProperty('vendor_name_here')) {
               delete past30DayData['vendor_name_here'];
             }
+
             console.log(past30DayData);
+
+
             past30DayGooglePie.MPChart('setData', past30DayData);
             past30DayGoogleTable.MPTable('setData', past30DayData);
           });
