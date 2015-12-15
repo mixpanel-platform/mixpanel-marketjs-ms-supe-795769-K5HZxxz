@@ -32,12 +32,12 @@
     <script>
       var past30DayGooglePie  = $('#30DayGooglePie').MPChart({chartType: 'pie'});
       var past30DayGoogleTable  = $('#30DayGoogleTable').MPTable({
-        showPercentages: true,
+        showPercentages: 'true',
         firstColHeader: 'Game Vendor'
       });
       var past30DayMopubPie  = $('#30DayMopubPie').MPChart({chartType: 'pie'});
       var past30DayMopubTable  = $('#30DayMopubTable').MPTable({
-        showPercentages: true,
+        showPercentages: 'true',
         firstColHeader: 'Game Vendor'
       });
             
@@ -68,8 +68,6 @@
               delete past30DayData['vendor_name_here'];
             }
             
-            console.log(past30DayData)
-
             past30DayGooglePie.MPChart('setData', past30DayData);
             past30DayGoogleTable.MPTable('setData', past30DayData);
           });
