@@ -45,16 +45,10 @@
             from: moment().subtract('30', 'days'),
             to: moment(),
             type: 'general'
-            'where': 'properties["SSP"] == google'
+            where: 'properties["SSP"]) == "google"'
       }
             
-      var past30DayParams = {
-          type: 'general'
-          unit: 'day'
-          interval: '30'
-          }
-            
-      var runQuery = function() {
+       var runQuery = function() {
         var past30DayData = {};
         
         //Google Pie Chart Data
