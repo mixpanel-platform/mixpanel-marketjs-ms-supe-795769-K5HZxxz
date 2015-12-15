@@ -40,35 +40,42 @@
         showPercentages: 'true',
         firstColHeader: 'Game Vendor'
       });
-            
+     
       var past30GoogleParams = {
             from: moment().subtract('30', 'days'),
             to: moment(),
-            type: 'general'
-            where: 'properties["SSP"]) == "google"'
-      }
-              console.log("END");
+            type: 'general',
+            where: 'properties["SSP"] == "google"'
+      };
 
-       var runQuery = function() {
-        var past30DayData = {};
+      var past30MopubParams = {
+            from: moment().subtract('30', 'days'),
+            to: moment(),
+            type: 'general',
+            where: 'properties["SSP"] == "mopub"'
+      }; 
+
+      runQuery();
+       function runQuery() {
         
         //Google Pie Chart Data
         
         MP.api.segment('Ad Loaded', 'Game Vendor', past30GoogleParams).done(function(results) {
-          $.extend(past30DayData, results.values());
-
-          MP.api.segment('Ad Loaded', 'Game Vendor', past30GoogleParams).done(function(results) {
-
-            if (past30DayData.hasOwnProperty('vendor_name_here')) {
-              delete past30DayData['vendor_name_here'];
-            }
             
-            past30DayGooglePie.MPChart('setData', past30DayData);
-            past30DayGoogleTable.MPTable('setData', past30DayData);
-          });
+            past30DayGooglePie.MPChart('setData', results);
+            past30DayGoogleTable.MPTable('setData', results);
+
+        //Mopub Pie Chart Data
+        
+        MP.api.segment('Ad Loaded', 'Game Vendor', past30MopubParams).done(function(results) {
+            
+            past30DayMopubPie.MPChart('setData', results);
+            past30DayMopubTable.MPTable('setData', results);
+
         });
-      };
-      
+      });
+      }
+
     </script>
   </body>
 </html>
