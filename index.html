@@ -42,7 +42,7 @@
       });
             
       var past30GoogleParams = {
-            from: moment().subtract(30, 'days'),
+            from: moment().subtract('30', 'days'),
             to: moment(),
             type: 'general'
             where: 'properties["SSP"] == google'
