@@ -61,6 +61,19 @@
             where: 'properties["SSP"] == "google"'
       };
 
+      var past30MopubParams = {
+           from: moment().subtract('30', 'days'),
+           to: moment(),
+           type: 'general',
+           where: 'properties["SSP"] == "mopub"'
+      }; 
+
+      var past30DayParams = {
+        type: 'general',
+        unit: 'day',
+        interval: '30'
+      }
+      
       var $mpdatepicker = $('.mpdatepicker').MPDatepicker();
       runQuery($mpdatepicker.val().from, $mpdatepicker.val().to);
       $mpdatepicker.on('change', function(e, dates) {
@@ -72,8 +85,6 @@
       var id;
       var conv;
 
-      //Conversion Table
-
       var filter = '(string(properties["Creative ID"]) == "19673" or ' +
                     'string(properties["Creative ID"]) == "19726" or ' +
                     'string(properties["Creative ID"]) == "19675")';
@@ -84,19 +95,6 @@
                     'to': endDate,
                     'where': filter,
                     'segment': segment};
-
-      var past30MopubParams = {
-            from: moment().subtract('30', 'days'),
-            to: moment(),
-            type: 'general',
-            where: 'properties["SSP"] == "mopub"'
-      }; 
-
-      var past30DayParams = {
-        type: 'general',
-        unit: 'day',
-        interval: '30'
-      }
 
       runQuery();
        function runQuery() {
@@ -126,6 +124,9 @@
 
         });
       }
+      
+      //Conversion Table
+      
         MP.api.funnel('Ad Loaded', 'Install', params).done(function(results) {
           var res = {};
           for (var k in results) {
